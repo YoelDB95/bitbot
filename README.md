@@ -32,9 +32,9 @@ npm install
 
 Crea un archivo .env en la raíz del proyecto con las siguientes variables de entorno:
 
-DISCORD_TOKEN=tu_token_aqui
-APPLICATION_ID=tu_id_de_aplicacion_aqui
-CANAL_BIENVENIDA_ID=el_id_del_canal_de_bienvenida
+## DISCORD_TOKEN=tu_token_aqui
+## APPLICATION_ID=tu_id_de_aplicacion_aqui
+## CANAL_BIENVENIDA_ID=el_id_del_canal_de_bienvenida
 
 Ejecuta el bot:
 
