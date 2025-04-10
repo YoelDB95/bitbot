@@ -22,7 +22,7 @@ Antes de comenzar, asegúrate de tener instalado lo siguiente:
 
 Instalación
 
-    Clona este repositorio a tu máquina local:
+    https://github.com/TeewsPepper/bitbot
 
 git clone https://github.com/tu-usuario/discord-bot.git
 cd discord-bot
