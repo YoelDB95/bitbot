@@ -30,6 +30,4 @@ assignees: ""
 - ¿Cómo encriptar emails? (Ej: Firebase, Supabase).  
 - ¿Qué pasa si el usuario ya está en un grupo?  
 
-### 📅 **Siguientes Pasos**  
-- [ ] Votar: 👍 = Aprobar | ❌ = Rechazar.  
-- [ ] Si se aprueba, asignar responsable para desarrollo.
+
