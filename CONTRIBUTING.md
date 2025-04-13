@@ -7,36 +7,51 @@ Como **maintainer**, agradezco tu interés en mejorar este proyecto. Sigue estas
 ## 🚀 **Cómo Contribuir**
 
 ### 1. Haz Fork del Repositorio
-1. Haz clic en **[Fork](https://github.com/tu-usuario/repo/fork)** (botón arriba a la derecha en GitHub).  
+
+1. Haz clic en **[Fork](https://github.com/TeewsPepper/bitbot/fork)** (botón arriba a la derecha en GitHub).  
 2. Clona **tu fork** (solo si trabajas localmente):  
    
-   git clone https://github.com/tu-usuario/repo.git
-   cd repo
-
-2. Elige un Issue Existente
-
-    Revisa los issues abiertos.
-
-    Espera mi confirmación (@maintainer) antes de empezar a codificar.
-
-3. Crea una Rama Descriptiva
-
-git checkout -b tipo/descripcion-corta 
-
-# Ejemplos:  
-# fix/error-verificacion  
-# feat/comando-nuevo
-
-4. Envía tu Pull Request (PR)
-
-1. Sincroniza con el repo principal (evita conflictos):
-
-    git fetch upstream
-    git merge upstream/main
+   git clone https://github.com/tu-usuario/bitbot.git
    
-2. Sube los cambios a tu fork:
+   cd bitbot
+   
+### 2. Agregar repo original como upstream:
+  1. git remote add upstream https://github.com/TeewsPepper/bitbot.git
+
+
+### 3. Elige un Issue Existente
+   1. Revisa los issues abiertos.
+   2. Espera mi confirmación (@maintainer) antes de empezar a codificar.
+
+
+
+### 4. Crea una Rama Descriptiva
+
+   1. git checkout -b tipo/descripcion-corta 
+      # Ejemplos:  
+      # fix/error-verificacion  
+      # feat/comando-nuevo
+
+
+
+### 5. Envía tu Pull Request (PR)
+
+ 1. Sincroniza con el repo principal (evita conflictos):
+
+  git fetch upstream
+  git merge upstream/main
+  
+
+   
+ 2. Sube los cambios a tu fork:
 
    git push origin tu-rama
+
+2. Crea el PR en GitHub:
+
+    Usa este template: [.github/](PULL_REQUEST_TEMPLATE.md)
+
+    Vincula el issue con Closes #XX o Relacionado con #XX.
    
 
 ### 📌 **Ejemplo Práctico**  
@@ -51,7 +66,7 @@ git checkout -b tipo/descripcion-corta
 ⚠️ Notas Clave
    
    Si un PR no resuelve completamente un issue, usa:
-  Relacionado con #55 
+   Relacionado con #55 
   
    Qué hace:
      Solo vincula el PR al issue #55 sin cerrarlo.
@@ -73,6 +88,9 @@ Resultado: El issue #55 sigue abierto, pero GitHub muestra el PR vinculado.
 Closes #78  # Cierra el issue de la solicitud original.  
 Relacionado con #45  # Referencia una discusión previa.  
 
+💬 ¿Necesitas Ayuda?
+      Dudas técnicas: Abre un Discussion.
+      Coordinación: Menciona @maintainer en tu PR/issue o en la discusión que abriste.
 
 
     
