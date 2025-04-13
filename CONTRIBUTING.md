@@ -1,4 +1,4 @@
-# 🛠 Guía para Contribuir a [Nombre del Bot]
+# 🛠 Guía para Contribuir a [BitBot]
 
 Como **maintainer**, agradezco tu interés en mejorar este proyecto. Sigue estas pautas para que tus contribuciones se integren sin problemas:
 
