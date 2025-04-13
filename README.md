@@ -35,22 +35,24 @@ Antes de comenzar, asegúrate de tener lo siguiente instalado:
 
 1. **Clona el repositorio**:
 
-   ```bash
+```bash
    git clone https://github.com/TeewsPepper/bitbot.git
    cd bitbot
 
 
-Instala las dependencias:
+2. Instala las dependencias:
 
+```bash
 npm install
 
-Configura el entorno: Crea un archivo .env en la raíz del proyecto y agrega lo siguiente:
+
+# Configura el entorno: Crea un archivo .env en la raíz del proyecto y agrega lo siguiente:
 
 DISCORD_TOKEN=tu_token_aqui
 APPLICATION_ID=tu_id_de_aplicacion_aqui
 CANAL_BIENVENIDA_ID=id_del_canal_de_bienvenida
 
-Ejecuta el bot:
+3. Ejecuta el bot:
 
 node utils/clearCommands.js
 
@@ -58,9 +60,11 @@ node utils/registerCommands.js
 
 node index.js
 
-Si todo está correcto, verás en la consola:
+## Si todo está correcto, verás en la consola:
 
     ✅ Bot conectado como [tu_bot]
+
+ ```   
 
 🧩 Estructura del Proyecto
 
@@ -80,16 +84,18 @@ Cómo contribuir:
 
     Crea una nueva rama:
 
+    
+```bash
 git checkout -b mi-nueva-funcionalidad
 
-Realiza tus cambios y verifica que todo funcione correctamente.
+# Realiza tus cambios y verifica que todo funcione correctamente.
 
-Sube tus cambios:
+# Sube tus cambios:
 
     git push origin mi-nueva-funcionalidad
 
-    Abre un pull request desde GitHub.
-
+    # Abre un pull request desde GitHub.
+```
     💡 Asegúrate de que tus cambios estén bien documentados y enfocados en mejorar la funcionalidad o la claridad del proyecto.
 
 🧠 Nota final
