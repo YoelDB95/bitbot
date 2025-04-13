@@ -9,47 +9,50 @@ Como **maintainer**, agradezco tu interés en mejorar este proyecto. Sigue estas
 ### 1. Haz Fork del Repositorio
 
 1. Haz clic en **[Fork](https://github.com/TeewsPepper/bitbot/fork)** (botón arriba a la derecha en GitHub).  
-2. Clona **tu fork** (solo si trabajas localmente):  
-   
+2. Clona **tu fork** (solo si trabajas localmente):
+     
+   ```bash
    git clone https://github.com/tu-usuario/bitbot.git
-   
    cd bitbot
    
+   
 ### 2. Agregar repo original como upstream:
-  1. git remote add upstream https://github.com/TeewsPepper/bitbot.git
-
+  1. Ejecuta:
+   ```bash
+   git remote add upstream https://github.com/TeewsPepper/bitbot.git
+   ```
 
 ### 3. Elige un Issue Existente
-   1. Revisa los issues abiertos.
-   2. Espera mi confirmación (@maintainer) antes de empezar a codificar.
+1. Revisa los issues abiertos.
+2. Espera mi confirmación (@maintainer) antes de empezar a codificar.
 
 
 
 ### 4. Crea una Rama Descriptiva
-
-   1. git checkout -b tipo/descripcion-corta 
+```bash
+    git checkout -b tipo/descripcion-corta 
       # Ejemplos:  
       # fix/error-verificacion  
       # feat/comando-nuevo
-
+```
 
 
 ### 5. Envía tu Pull Request (PR)
 
  1. Sincroniza con el repo principal (evita conflictos):
-
+```bash
   git fetch upstream
   git merge upstream/main
-  
+```  
 
    
  2. Sube los cambios a tu fork:
-
+```bash
    git push origin tu-rama
-
+```
 2. Crea el PR en GitHub:
 
-    Usa este template: [.github/](PULL_REQUEST_TEMPLATE.md)
+    Usa este template: [.github/PULL_REQUEST_TEMPLATE.md](.github/PULL_REQUEST_TEMPLATE.md)
 
     Vincula el issue con Closes #XX o Relacionado con #XX.
    
@@ -65,17 +68,14 @@ Como **maintainer**, agradezco tu interés en mejorar este proyecto. Sigue estas
 
 ⚠️ Notas Clave
    
-   Si un PR no resuelve completamente un issue, usa:
-   Relacionado con #55 
-  
-   Qué hace:
-     Solo vincula el PR al issue #55 sin cerrarlo.
-    Usado cuando:
-        El PR es parcial (resuelve solo una parte del issue).
-        El issue requiere más trabajo (ej: otros PRs).
-        Quieres discutir la solución antes de cerrar el issue.
-
-Resultado: El issue #55 sigue abierto, pero GitHub muestra el PR vinculado.
+- Si un PR no resuelve completamente un issue, usa:
+    ```markdown
+    Relacionado con #55 
+    ``` 
+   - **Qué hace**: Vincula sin cerrar.
+    - **Usado cuando**:
+        - El PR es parcial.
+        - El issue requiere más trabajo.
    
 
 💡 Ejemplo de PR Perfecto
