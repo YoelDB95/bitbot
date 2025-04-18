@@ -32,6 +32,11 @@ async function verificarUsuario(member) {
     return;
   }
 
+  if (!data || !Array.isArray(data.usuarios)) {
+    console.error('❌ El archivo usuarios.json no tiene el formato correcto.');
+    return;
+  }
+
   const usuario = data.usuarios.find(
     u => u.username.toLowerCase() === member.user.username.toLowerCase()
   );
