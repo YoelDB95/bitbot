@@ -19,9 +19,9 @@ const client = new Client({
 });
 
 // ─── Función de verificación ──────────────────────────────
-async function verificarUsuario(member) {
-  const dbPath = process.env.USUARIOS_DATA_PATH;
-  if (!dbPath) return console.error('❌ Falta RUTA_DB_USUARIOS en el .env');
+async function verifyUser(member) {
+  const dbPath = process.env.USERS_DATA_PATH;
+  if (!dbPath) return console.error('❌ Falta USERS_DATA_PATH en el .env');
 
   let data;
   try {
@@ -32,33 +32,33 @@ async function verificarUsuario(member) {
     return;
   }
 
-  if (!data || !Array.isArray(data.usuarios)) {
-    console.error('❌ El archivo usuarios.json no tiene el formato correcto.');
+  if (!data || !Array.isArray(data.users)) {
+    console.error('❌ El archivo dataUser.json no tiene el formato correcto.');
     return;
   }
 
-  const usuario = data.usuarios.find(
+  const user = data.users.find(
     u => u.username.toLowerCase() === member.user.username.toLowerCase()
   );
-
-  if (!usuario) {
+const register = process.env.REGISTER_URL;
+  if (!user) {
     try {
-      await member.send('🚫 No estás registrado aún. Por favor registrate en la plataforma.');
+      await member.send('🚫 No estás registrado aún. Por favor registrate en la plataforma. '+ register);
     } catch {}
     return;
   }
 
-  const canal = member.guild.channels.cache.find(c => c.name === usuario.grupo);
-  if (!canal) return console.warn(`⚠️ Canal "${usuario.grupo}" no encontrado.`);
+  const channel = member.guild.channels.cache.find(c => c.name === user.group);
+  if (!channel) return console.warn(`⚠️ Canal "${user.group}" no encontrado.`);
 
   try {
-    await canal.permissionOverwrites.edit(member.id, {
+    await channel.permissionOverwrites.edit(member.id, {
       ViewChannel: true,
       SendMessages: true,
       ReadMessageHistory: true,
     });
 
-    await member.send(`✅ Acceso otorgado al canal **#${canal.name}** según tu grupo.`);
+    await member.send(`✅ Acceso otorgado al canal **#${channel.name}** según tu grupo.`);
   } catch (err) {
     console.error('❌ Error al asignar permisos:', err);
   }
@@ -76,7 +76,7 @@ client.on('guildMemberAdd', async member => {
     await member.send('¡Bienvenido! Escribí `/ayuda` para guiarte en el registro.');
   } catch {}
 
-  await verificarUsuario(member);
+  await verifyUser(member);
 });
 
 // ─── Comandos Slash ──────────────────────────────
@@ -179,108 +179,108 @@ client.on('interactionCreate', async interaction => {
     case 'ayuda':
       await interaction.reply({
         content: '**📌 Pasos para registrarte:**\n1. Verificá tu email\n2. Completá tu perfil con `/perfil`\n3. ¡Listo!',
-        ephemeral: true,
+        flags: 64,
       });
       break;
 
     case 'perfil':
       await interaction.reply({
         content: `👤 **Perfil de ${user.username}**\n📅 Cuenta creada: <t:${Math.floor(user.createdTimestamp / 1000)}:D>\n🆔 ID: ${user.id}`,
-        ephemeral: true,
+        flags: 64,
       });
       break;
 
     case 'reglas':
       await interaction.reply({
         content: '**📜 Reglas del servidor:**\n1. Respeto mutuo\n2. No spam\n3. Seguir a los mods\n4. ¡Divertite! 🎉',
-        ephemeral: true,
+        flags: 64,
       });
       break;
 
     case 'info':
       await interaction.reply({
         content: `📊 **Info del servidor:**\n🔤 Nombre: ${guild.name}\n👥 Miembros: ${guild.memberCount}\n🆔 ID: ${guild.id}`,
-        ephemeral: true,
+        flags: 64,
       });
       break;
 
     case 'ping':
       await interaction.reply({
         content: `🏓 ¡Pong! Latencia: **${Date.now() - interaction.createdTimestamp}ms**`,
-        ephemeral: true,
+        flags: 64,
       });
       break;
 
     case 'verificar': {
-      const objetivo = interaction.options.getUser('usuario') || interaction.user;
-      const miembro = interaction.guild.members.cache.get(objetivo.id);
+      const objetive = interaction.options.getUser('usuario') || interaction.user;
+      const member = interaction.guild.members.cache.get(objetive.id);
 
-      if (objetivo.id !== interaction.user.id && !interaction.member.permissions.has(PermissionsBitField.Flags.ManageRoles)) {
-        return interaction.reply({ content: '🚫 No tenés permisos para verificar a otros usuarios.', ephemeral: true });
+      if (objetive.id !== interaction.user.id && !interaction.member.permissions.has(PermissionsBitField.Flags.ManageRoles)) {
+        return interaction.reply({ content: '🚫 No tenés permisos para verificar a otros usuarios.', flags: 64 });
       }
 
-      await verificarUsuario(miembro);
-      await interaction.reply({ content: `🔍 Verificando a ${objetivo.username}...`, ephemeral: true });
+      await verifyUser(member);
+      await interaction.reply({ content: `🔍 Verificando a ${objetive.username}...`, flags: 64 });
       break;
     }
 
     case 'ban': {
       if (!interaction.member.permissions.has(PermissionsBitField.Flags.BanMembers)) {
-        return interaction.reply({ content: '🚫 No tenés permiso para banear.', ephemeral: true });
+        return interaction.reply({ content: '🚫 No tenés permiso para banear.', flags: 64 });
       }
-      const usuario = interaction.options.getUser('usuario');
-      const razon = interaction.options.getString('razon') || 'Sin razón';
-      const miembro = interaction.guild.members.cache.get(usuario.id);
-      if (!miembro) return interaction.reply({ content: '❌ Usuario no encontrado.', ephemeral: true });
+      const user = interaction.options.getUser('usuario');
+      const reason = interaction.options.getString('razon') || 'Sin razón';
+      const member = interaction.guild.members.cache.get(user.id);
+      if (!member) return interaction.reply({ content: '❌ Usuario no encontrado.', flags: 64 });
 
-      await miembro.ban({ reason: razon });
-      await interaction.reply(`🔨 ${usuario.tag} fue baneado. Razón: ${razon}`);
+      await member.ban({ reason: reason });
+      await interaction.reply(`🔨 ${user.tag} fue baneado. Razón: ${razon}`);
       break;
     }
 
     case 'kick': {
       if (!interaction.member.permissions.has(PermissionsBitField.Flags.KickMembers)) {
-        return interaction.reply({ content: '🚫 No tenés permiso para expulsar.', ephemeral: true });
+        return interaction.reply({ content: '🚫 No tenés permiso para expulsar.', flags: 64 });
       }
-      const usuario = interaction.options.getUser('usuario');
-      const razon = interaction.options.getString('razon') || 'Sin razón';
-      const miembro = interaction.guild.members.cache.get(usuario.id);
-      if (!miembro) return interaction.reply({ content: '❌ Usuario no encontrado.', ephemeral: true });
+      const user = interaction.options.getUser('usuario');
+      const reason = interaction.options.getString('razon') || 'Sin razón';
+      const member = interaction.guild.members.cache.get(user.id);
+      if (!member) return interaction.reply({ content: '❌ Usuario no encontrado.', flags: 64 });
 
-      await miembro.kick(razon);
-      await interaction.reply(`👢 ${usuario.tag} fue expulsado. Razón: ${razon}`);
+      await member.kick(reason);
+      await interaction.reply(`👢 ${user.tag} fue expulsado. Razón: ${reason}`);
       break;
     }
 
     case 'mute': {
-      const usuario = interaction.options.getUser('usuario');
-      const razon = interaction.options.getString('razon') || 'Sin razón';
-      const miembro = interaction.guild.members.cache.get(usuario.id);
+      const user = interaction.options.getUser('usuario');
+      const reason = interaction.options.getString('razon') || 'Sin razón';
+      const member = interaction.guild.members.cache.get(user.id);
       const mutedRole = interaction.guild.roles.cache.find(r => r.name === 'Muted');
-      if (!mutedRole || !miembro) return interaction.reply({ content: '❌ Rol o usuario no encontrado.', ephemeral: true });
+      if (!mutedRole || !member) return interaction.reply({ content: '❌ Rol o usuario no encontrado.', flags: 64 });
 
-      await miembro.roles.add(mutedRole);
-      await interaction.reply(`🔇 ${usuario.tag} fue silenciado. Razón: ${razon}`);
+      await member.roles.add(mutedRole);
+      await interaction.reply(`🔇 ${user.tag} fue silenciado. Razón: ${reason}`);
       break;
     }
 
     case 'unmute': {
-      const usuario = interaction.options.getUser('usuario');
-      const miembro = interaction.guild.members.cache.get(usuario.id);
+      const user = interaction.options.getUser('usuario');
+      const member = interaction.guild.members.cache.get(user.id);
       const mutedRole = interaction.guild.roles.cache.find(r => r.name === 'Muted');
-      if (!mutedRole || !miembro) return interaction.reply({ content: '❌ Rol o usuario no encontrado.', ephemeral: true });
+      if (!mutedRole || !member) return interaction.reply({ content: '❌ Rol o usuario no encontrado.', flags: 64 });
 
-      await miembro.roles.remove(mutedRole);
-      await interaction.reply(`🔊 ${usuario.tag} ya no está silenciado.`);
+      await member.roles.remove(mutedRole);
+      await interaction.reply(`🔊 ${user.tag} ya no está silenciado.`);
       break;
     }
 
     case 'warn': {
-      const usuario = interaction.options.getUser('usuario');
-      const razon = interaction.options.getString('razon') || 'Sin razón';
-      await interaction.reply(`⚠️ ${usuario.tag} fue advertido. Razón: ${razon}`);
+      const user = interaction.options.getUser('usuario');
+      const reason = interaction.options.getString('razon') || 'Sin razón';
+      await interaction.reply(`⚠️ ${user.tag} fue advertido. Razón: ${reason}`);
       try {
-        await usuario.send(`⚠️ Recibiste una advertencia en ${interaction.guild.name}: ${razon}`);
+        await user.send(`⚠️ Recibiste una advertencia en ${interaction.guild.name}: ${reason}`);
       } catch {}
       break;
     }
