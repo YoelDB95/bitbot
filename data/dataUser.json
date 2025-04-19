@@ -1,19 +1,19 @@
 {
-    "usuarios": [
+    "users": [
         {
             "username": "jonathan_muchewicz",
-            "grupo": "grupo_1",
-            "nombre": "Jonathan Muchewicz"
+            "group": "grupo_1",
+            "name": "Jonathan Muchewicz"
         },
         {
             "username": "jose_antonio",
-            "grupo": "grupo_2",
-            "nombre": "José Antonio"
+            "group": "grupo_2",
+            "name": "José Antonio"
         },
         {
             "username": "maria_gonzalez",
-            "grupo": "grupo_3",
-            "nombre": "María González"
+            "group": "grupo_3",
+            "name": "María González"
         }
     ]
 }
