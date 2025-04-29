@@ -72,14 +72,37 @@ node index.js
 🧩 Estructura del Proyecto
 
 bitbot/
-├── data/
-    ├── dataUser.json     # Base de datos temporal
-├── CONTRIBUTING.md       # Guia para contribuir en el proyecto
-├── index.js              # Lógica principal del bot
-├── .env                  # Variables de entorno (no subir a Git)
-├── .gitignore            # Archivos y directorios que no queremos subir al repo     
-├── package.json          # Configuración del proyecto y dependencias
-└── README.md             # Este archivo
+│
+│ ├── commands/
+│ │ ├── general/
+│ │ │ ├── help.js          # Comando de ayuda (/help)
+│ │ │ ├── userinfo.js      # Muestra info de usuario
+│ │ │ └── serverinfo.js    # Muestra info del servidor
+│ │ ├── moderation/
+│ │ │ ├── ban.js           # Banear usuarios
+│ │ │ └── warn.js          # Sistema de advertencias
+│ │ └── system/
+│ │   ├── points.js        # Gestión de puntos/niveles
+│ │   └── leaderboard.js   # Tabla de clasificación
+│ │
+│ ├── events/
+│ │ ├── message.js         # Filtro de lenguaje
+│ │ └── ready.js           # Evento de inicio
+│ │
+│ └── utils/
+│   ├── helpers.js         # Funciones de formato
+│   └── warnings.js        # Lógica de advertencias
+│
+├── config/
+│ └── config.js            # Tokens y configuraciones
+│
+├── data/                  # Datos persistentes (JSON)
+│ ├── users.json           # Puntos/niveles
+│ └── warnings.json        # Advertencias
+│
+├── index.js               # Entrypoint
+├── package.json
+└── README.md              # Documentación
 
 🤝 Contribuciones
 
