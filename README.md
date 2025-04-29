@@ -76,36 +76,47 @@ node index.js
 
 bitbot/
 │
-│ ├── commands/
-│ │ ├── general/
-│ │ │ ├── help.js          # Comando de ayuda (/help)
-│ │ │ ├── userinfo.js      # Muestra info de usuario
-│ │ │ └── serverinfo.js    # Muestra info del servidor
-│ │ ├── moderation/
-│ │ │ ├── ban.js           # Banear usuarios
-│ │ │ └── warn.js          # Sistema de advertencias
-│ │ └── system/
-│ │   ├── points.js        # Gestión de puntos/niveles
-│ │   └── leaderboard.js   # Tabla de clasificación
-│ │
-│ ├── events/
-│ │ ├── message.js         # Filtro de lenguaje
-│ │ └── ready.js           # Evento de inicio
-│ │
-│ └── utils/
-│   ├── helpers.js         # Funciones de formato
-│   └── warnings.js        # Lógica de advertencias
+├── commands/ # 📦 Todos los comandos organizados por categoría
+│ ├── generales/
+│ │ ├── ayuda.js
+│ │ ├── userinfo.js
+│ │ └── serverinfo.js
+│ ├── moderacion/
+│ │ ├── ban.js
+│ │ ├── unban.js
+│ │ ├── kick.js
+│ │ ├── mute.js
+│ │ ├── unmute.js
+│ │ ├── warn.js
+│ │ ├── listar-warns.js
+│ │ └── clear-warns.js
+│ └── sistema/
+│ ├── sistema.js # Subcomando con /subir, /bajar, /nivel
+│ └── leaderboard.js
 │
-├── config/
-│ └── config.js            # Tokens y configuraciones
+├── events/ # 📡 Eventos del bot
+│ ├── ready.js
+│ ├── guildMemberAdd.js
+│ ├── messageCreate.js # Para lenguaje inapropiado y actividad
+│ ├── messageReactionAdd.js
+│ └── messageReactionRemove.js
 │
-├── data/                  # Datos persistentes (JSON)
-│ ├── users.json           # Puntos/niveles
-│ └── warnings.json        # Advertencias
+├── utils/ # 🛠️ Funciones auxiliares
+│ ├── helpers.js # Detectar lenguaje inapropiado, formateos
+│ ├── colaboradores.js # Manejo de niveles, puntos, roles
+│ ├── warns.js # Cargar/guardar advertencias
+│ └── registerCommands.js # Registro de comandos slash
 │
-├── index.js               # Entrypoint
+├── data/ # 🗃️ Archivos persistentes
+│ ├── colaboradores.json # Niveles, puntos, etc.
+│ └── advertencias.json # Advertencias por usuario
+│
+├── config/ # ⚙️ Configuración del bot
+│ └── config.js # IDs, roles, canal logs, niveles
+│
+├── index.js # 🚀 Archivo principal
 ├── package.json
-└── README.md              # Documentación
+└── .env # Token y variables privadas
 
 🤝 Contribuciones
 
