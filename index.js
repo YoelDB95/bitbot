@@ -18,6 +18,8 @@ const client = new Client({
   ],
 });
 
+const helpCommand = require('./commands/generales/ayuda');
+
 // ─── Función de verificación ──────────────────────────────
 async function verifyUser(member) {
   const dbPath = process.env.USERS_DATA_PATH;
@@ -177,10 +179,7 @@ client.on('interactionCreate', async interaction => {
 
   switch (commandName) {
     case 'ayuda':
-      await interaction.reply({
-        content: '**📌 Pasos para registrarte:**\n1. Verificá tu email\n2. Completá tu perfil con `/perfil`\n3. ¡Listo!',
-        flags: 64,
-      });
+      helpCommand(interaction)
       break;
 
     case 'perfil':
