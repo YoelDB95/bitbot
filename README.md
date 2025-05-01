@@ -51,25 +51,72 @@ npm install
 DISCORD_TOKEN=tu_token_aqui
 APPLICATION_ID=tu_id_de_aplicacion_aqui
 CANAL_BIENVENIDA_ID=id_del_canal_de_bienvenida
+USERS_DATA_PATH=./data/dataUser.json (temporal)
+REGISTER_URL=https://app.estructura.co/initiatives/human-development/subscription/control-user-email?ref=WH5598F161MW17889P2VZ0TIY9U6DDY0
 
-3. Ejecuta el bot:
+```
+3. Canal Discord
+
+Crear un canal para los grupos Ej. grupo_1
+crear Rol Muted (dejar permisos solo para leer mensajes)
+
+4. Ejecuta el bot:
+```bash
 
 node index.js
+
+```
 
 ## Si todo está correcto, verás en la consola:
 
     ✅ Bot conectado como [tu_bot]
 
- ```   
 
 🧩 Estructura del Proyecto
 
 bitbot/
-├── index.js              # Lógica principal del bot
-├── .env                  # Variables de entorno (no subir a Git)
-├── .gitignore            # Archivos y directorios que no queremos subir al repo     
-├── package.json          # Configuración del proyecto y dependencias
-└── README.md             # Este archivo
+│
+├── commands/ # 📦 Todos los comandos organizados por categoría
+│ ├── generales/
+│ │ ├── ayuda.js
+│ │ ├── userinfo.js
+│ │ └── serverinfo.js
+│ ├── moderacion/
+│ │ ├── ban.js
+│ │ ├── unban.js
+│ │ ├── kick.js
+│ │ ├── mute.js
+│ │ ├── unmute.js
+│ │ ├── warn.js
+│ │ ├── listar-warns.js
+│ │ └── clear-warns.js
+│ └── sistema/
+│ ├── sistema.js # Subcomando con /subir, /bajar, /nivel
+│ └── leaderboard.js
+│
+├── events/ # 📡 Eventos del bot
+│ ├── ready.js
+│ ├── guildMemberAdd.js
+│ ├── messageCreate.js # Para lenguaje inapropiado y actividad
+│ ├── messageReactionAdd.js
+│ └── messageReactionRemove.js
+│
+├── utils/ # 🛠️ Funciones auxiliares
+│ ├── helpers.js # Detectar lenguaje inapropiado, formateos
+│ ├── colaboradores.js # Manejo de niveles, puntos, roles
+│ ├── warns.js # Cargar/guardar advertencias
+│ └── registerCommands.js # Registro de comandos slash
+│
+├── data/ # 🗃️ Archivos persistentes
+│ ├── colaboradores.json # Niveles, puntos, etc.
+│ └── advertencias.json # Advertencias por usuario
+│
+├── config/ # ⚙️ Configuración del bot
+│ └── config.js # IDs, roles, canal logs, niveles
+│
+├── index.js # 🚀 Archivo principal
+├── package.json
+└── .env # Token y variables privadas
 
 🤝 Contribuciones
 
@@ -90,8 +137,9 @@ git checkout -b mi-nueva-funcionalidad
 
     git push origin mi-nueva-funcionalidad
 
-    # Abre un pull request desde GitHub.
 ```
+
+ # Abre un pull request desde GitHub.
     💡 Asegúrate de que tus cambios estén bien documentados y enfocados en mejorar la funcionalidad o la claridad del proyecto.
 
 🧠 Nota final
@@ -105,3 +153,4 @@ Este bot no es solo una herramienta funcional, sino también un espacio de apren
     Contribuir a un proyecto real en crecimiento
 
 ¡Toda participación suma! 💪✨
+````

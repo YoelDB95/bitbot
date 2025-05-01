@@ -1,0 +1,19 @@
+{
+    "users": [
+        {
+            "username": "jonathan_muchewicz",
+            "group": "grupo_1",
+            "name": "Jonathan Muchewicz"
+        },
+        {
+            "username": "jose_antonio",
+            "group": "grupo_2",
+            "name": "José Antonio"
+        },
+        {
+            "username": "maria_gonzalez",
+            "group": "grupo_3",
+            "name": "María González"
+        }
+    ]
+}
