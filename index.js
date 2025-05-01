@@ -8,6 +8,7 @@ const {
   Routes,
   PermissionsBitField,
 } = require('discord.js');
+const { help } = require('./commands/generales/ayuda');
 
 const client = new Client({
   intents: [
@@ -177,10 +178,7 @@ client.on('interactionCreate', async interaction => {
 
   switch (commandName) {
     case 'ayuda':
-      await interaction.reply({
-        content: '**📌 Pasos para registrarte:**\n1. Verificá tu email\n2. Completá tu perfil con `/perfil`\n3. ¡Listo!',
-        flags: 64,
-      });
+      help(interaction);
       break;
 
     case 'perfil':
