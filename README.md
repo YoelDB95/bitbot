@@ -35,7 +35,7 @@ Antes de comenzar, asegúrate de tener lo siguiente instalado:
 
 1. **Clona el repositorio**:
 
-```bash
+````bash
    git clone https://github.com/TeewsPepper/bitbot.git
    cd bitbot
 
@@ -70,7 +70,7 @@ node index.js
 ## Si todo está correcto, verás en la consola:
 
     ✅ Bot conectado como [tu_bot]
-   
+
 
 🧩 Estructura del Proyecto
 
@@ -127,7 +127,6 @@ Cómo contribuir:
 
     Crea una nueva rama:
 
-    
 ```bash
 git checkout -b mi-nueva-funcionalidad
 
@@ -153,3 +152,4 @@ Este bot no es solo una herramienta funcional, sino también un espacio de apren
     Contribuir a un proyecto real en crecimiento
 
 ¡Toda participación suma! 💪✨
+````
